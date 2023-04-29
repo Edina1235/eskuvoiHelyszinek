@@ -28,21 +28,20 @@ export class RegisterComponent implements OnInit, OnDestroy{
   ngOnInit() {}
 
   register() {
-    this.user = {
-      id:'',
-      username: this.felhasznalonev.value as string,
-      email: this.email.value as string,
-      telefon: this.telefon.value as string
-    };
-    console.log(this.user);
-    this.uservice.create(this.user).then( data => {
-      console.log(data);
-      console.log('siker');
-      this.fel='Felhasználó elmentve az adatbázisban!';
-    }).catch(error => {console.log(error);});
     this.auth.register(this.email.value as string, this.jelszo.value as string).then(cred => {
         console.log(cred);
         this.reg='Sikeres regisztráció';
+        this.user = {
+          id:'',
+          username: this.felhasznalonev.value as string,
+          email: this.email.value as string,
+          telefon: this.telefon.value as string
+        };
+        this.uservice.create(this.user).then( data => {
+          console.log(data);
+          console.log('siker');
+          this.fel='Felhasználó elmentve az adatbázisban!';
+        }).catch(error => {console.log(error);});
     }).catch(error => {
         console.error(error);
     });
