@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "eskuvoihelyszinek-645b0": {
+      "hosting": {
+        "eskuvoiHelyszinek": [
+          "eskuvoihelyszinek-645b0"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "eskuvoihelyszinek-645b0"
+  }
+}
