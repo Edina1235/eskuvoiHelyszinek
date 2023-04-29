@@ -41,9 +41,14 @@ export class RegisterComponent implements OnInit, OnDestroy{
           console.log(data);
           console.log('siker');
           this.fel='Felhasználó elmentve az adatbázisban!';
-        }).catch(error => {console.log(error);});
+        }).catch(error => {
+          console.log(error);
+          this.fel='Sikertelen a felhasználó elmentése az adatbázisban';
+        });
     }).catch(error => {
         console.error(error);
+        this.reg='Sikertelen regisztráció (hiányos adat vagy már regisztrálva van ez az email cím)';
+        this.fel='';
     });
   }
 
