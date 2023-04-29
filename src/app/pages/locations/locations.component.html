@@ -1,0 +1,22 @@
+<div class="header">
+  <h1>Eskuvoi helyszinek</h1>
+<nav>
+  <div class="navbar">
+    <div class="helyszin">Helyszínek</div>
+    <div (click)="listazas()" >Adataim</div>
+    <div (click)="kijelentkezes()" >Kijelentkezés</div>
+  </div>
+</nav>
+</div>
+<div class="main">
+  <div class="bg-img" [ngStyle]=getUrl()></div>
+  <div class="helyek" *ngFor="let hely of helyek; index as i">
+    <div class="helyek{{i}}" >
+      <img src="{{hely.kep}}"><br/>
+      <h1>{{hely.nev}}</h1><br/>
+      <label>Ára: {{hely.ar}}</label><br/>
+      <button (click)="navigalas(hely)">Bővebben</button>
+    </div>
+  </div>
+</div>
+<router-outlet (activate)="onActivate($event)" ></router-outlet>

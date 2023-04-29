@@ -1,0 +1,27 @@
+<div class="hatter" [ngStyle]=getUrl() >
+  <h1>Regisztráció</h1>
+  <div class="mat-form-field">
+    <mat-form-field appearance="outline">
+    <mat-label>Felhasználónév:</mat-label>
+    <input matInput type="text" id="name" [formControl]="felhasznalonev" >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+    <mat-label>Email:</mat-label>
+    <input matInput type="email" id="email" [formControl]="email" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Telefon:</mat-label>
+      <input matInput type="email" id="telefon" [formControl]="telefon" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+    <mat-label>Jelszó:</mat-label>
+    <input matInput type="password" id="password" [formControl]="jelszo" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+    <mat-label>Jelszó újra:</mat-label>
+    <input matInput type="password" id="password2" [formControl]="jelszoUjra" />
+    </mat-form-field>
+    <button mat-raised-button id="register" (click)="register()" >Regisztráció</button>
+    <!--<button mat-raised-button id="cancel" (click)="navigation()" >Megse</button>-->
+  </div>
+</div>

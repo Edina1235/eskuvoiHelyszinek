@@ -1,0 +1,52 @@
+<div class="header">
+  <h1>Eskuvoi helyszinek</h1>
+  <nav>
+    <div class="navbar">
+      <div (click)="helyszinek()">Helyszínek</div>
+      <div  class="adataim">Adataim</div>
+      <div (click)="kijelentkezes()" >Kijelentkezés</div>
+    </div>
+  </nav>
+</div>
+<div class="main">
+  <div class="bg-img" [ngStyle]=getUrl()></div>
+  <div class="bevitel">
+    <h1>Adataid:</h1>
+    <mat-form-field >
+      <mat-label>Email:</mat-label>
+      <input matInput type="text" [formControl]="email"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Felhasználónév:</mat-label>
+      <input matInput type="text" [formControl]="felhasznalonev"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Telefonszám:</mat-label>
+      <input matInput type="text" [formControl]="telefon"/>
+    </mat-form-field>
+    <button mat-raised-button (click)="modosit()" >Módosítás</button>
+  </div>
+  <h1>Foglalásaid:</h1><br/>
+  <section *ngFor="let foglalas of foglalasok; index as i" [ngClass]="(i%2===0)?'purple': 'rose'">
+  <img src="{{foglalas.kep}}"/>
+    <div class="adat">
+      <p>{{foglalas.nev}}</p>
+      <p>Amikor lefoglaltad:</p>
+      <p>{{foglalas.mikor | dateMY}}</p>
+      <p>Amikorra lefoglaltad:</p>
+      <p>{{foglalas.datum | dateMY}}</p>
+    </div>
+  <button mat-icon-button (click)="torles(foglalas)" >
+    <mat-icon>
+      close
+    </mat-icon>
+  </button>
+  </section>
+  <button mat-raised-button class="delete" (click)="deleteUser()" >Fiók törlése</button>
+  <div *ngIf="seged==='admin@admin.com'">
+    <div *ngFor="let felhasznalo of felhasznalok;index as i" [ngClass]="(i%2===0)?'purple': 'rose'" class="felhasznalo">
+      <p>Email:{{felhasznalo.email}}</p>
+      <p>Felhasználónév: {{felhasznalo.username}}</p>
+    </div>
+  </div>
+</div>

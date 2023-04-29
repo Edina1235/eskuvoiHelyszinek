@@ -1,0 +1,28 @@
+mat-sidenav-container {
+  height: 100%;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
+
+.menu {
+  margin: 30px;
+
+
+  button, mat-icon {
+    transform: scale(1.5);
+    z-index:0;
+  }
+}
+
+mat-sidenav {
+  width: 250px;
+  padding: 5px;
+  background-color: #FCF4F8;
+
+}
+
+
+
+

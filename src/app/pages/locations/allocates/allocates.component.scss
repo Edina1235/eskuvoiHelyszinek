@@ -1,0 +1,74 @@
+* {
+  margin:0;
+  font-family: "Bookman Old Style";
+}
+
+
+.bg-img{
+  filter: blur(8px);
+  //background: url("../../../../assets/back.jpg") no-repeat center center fixed;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  position: fixed;
+  z-index:-1;
+}
+
+.adatok {
+  max-width: 310px;
+  float: left;
+  z-index: 2;
+}
+
+
+h1,p {
+  padding: 20px;
+  z-index: 100;
+}
+
+
+button {
+  margin: 10px;
+  width: 200px;
+  height: 40px;
+  border: none;
+  font-size: 20px;
+  background-color: #FFA5E3;
+}
+
+img{
+  max-width:600px;
+  max-height: 500px;
+  float: left;
+  margin: 20px;
+  z-index:100;
+}
+
+mat-form-field {
+  width: 350px;
+  margin:30px;
+  z-index:1000;
+  div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+  }
+  input {
+    background-color: #CDCEE6;
+    margin:5px;
+    height: 35px;
+    text-align: center;
+    align-self: center;
+  }
+
+}
+
+
