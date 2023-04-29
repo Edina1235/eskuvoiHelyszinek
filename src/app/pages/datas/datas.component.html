@@ -1,5 +1,5 @@
 <div class="header">
-  <h1>Eskuvoi helyszinek</h1>
+  <h1>Esküvői helyszínek</h1>
   <nav>
     <div class="navbar">
       <div (click)="helyszinek()">Helyszínek</div>
@@ -45,7 +45,7 @@
   <button mat-raised-button class="delete" (click)="deleteUser()" >Fiók törlése</button>
   <div *ngIf="seged==='admin@admin.com'">
     <div *ngFor="let felhasznalo of felhasznalok;index as i" [ngClass]="(i%2===0)?'purple': 'rose'" class="felhasznalo">
-      <p>Email:{{felhasznalo.email}}</p>
+      <p>E-mail:{{felhasznalo.email}}</p>
       <p>Felhasználónév: {{felhasznalo.username}}</p>
     </div>
   </div>
