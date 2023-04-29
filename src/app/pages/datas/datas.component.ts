@@ -7,7 +7,7 @@ import {UserService} from "../../shared/services/user.service";
 import {User} from "../../shared/models/User";
 import {ImageService} from "../../shared/services/image.service";
 import {AuthService} from "../../shared/services/auth.service";
-import { getAuth, deleteUser } from "firebase/auth";
+import { getAuth, deleteUser, updateEmail } from "firebase/auth";
 import {Subscription} from "rxjs";
 
 
@@ -92,13 +92,33 @@ export class DatasComponent implements OnInit, OnDestroy{
   }
 
   modosit() {
-    if(this.email.value !== '') {
+    if(this.email.value !== '' && this.email.value !== this.user.email) {
+      if(this.foglalasok!==undefined) {
+        for(let i=0;i<this.foglalasok.length;i++) {
+          this.foglalasok[i].rendelo=this.email.value as string;
+          this.reservation.update(this.foglalasok[i]).then(cred => {
+            console.log(cred);
+          }).catch(error => {
+            console.log(error);
+          });
+        }
+      }
+
+      const user = getAuth().currentUser;
+      if(user) {
+        updateEmail(user, this.email.value as string).then( cred => {
+          console.log(cred);
+        }).catch(error => {
+          console.log(error);
+        });
+      }
+
       this.user.email = this.email.value as string;
     }
-    if(this.telefon.value !== '') {
+    if(this.telefon.value !== '' && this.telefon.value !== this.user.telefon) {
       this.user.telefon = this.telefon.value as string;
     }
-    if(this.felhasznalonev.value !== '') {
+    if(this.felhasznalonev.value !== '' && this.felhasznalonev.value !== this.user.username) {
       this.user.username = this.felhasznalonev.value as string;
     }
     this.user.id=this.id as string;
@@ -124,6 +144,7 @@ export class DatasComponent implements OnInit, OnDestroy{
       console.log('siker')
       localStorage.removeItem('user');
       let user = getAuth().currentUser;
+      console.log(user);
       if (user) {
         deleteUser(user).then(_ => {
           console.log('siker');
