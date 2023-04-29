@@ -45,7 +45,6 @@
 
 .bg-img{
   filter: blur(8px);
-  //background: url("../../../assets/back.jpg") no-repeat center center fixed;
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
@@ -142,4 +141,37 @@
     filter: blur(3px);
   }
 
+}
+
+@media only screen and (max-width: 449px) {
+  .helyek0, .helyek1, .helyek2, .helyek3, .helyek4, .helyek5, .helyek6, .helyek7, .helyek8,
+  .helyek9, .helyek10, .helyek11, .helyek12, .helyek13, .helyek14, .helyek15, .helyek16, .helyek17 {
+    width: 20rem;
+    height: 28rem;
+  }
+  .navbar > div {
+    width: 80px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .helyek0, .helyek1, .helyek2, .helyek3, .helyek4, .helyek5, .helyek6, .helyek7, .helyek8,
+  .helyek9, .helyek10, .helyek11, .helyek12, .helyek13, .helyek14, .helyek15, .helyek16, .helyek17 {
+    width: 15rem;
+    height: 20rem;
+    h1 {
+      font-size: 20px;
+    }
+
+    label {
+      font-size: 15px;
+    }
+  }
+  .navbar {
+    flex-direction: column;
+  }
+  .navbar > div {
+    width: 100%;
+    padding: 10px;
+  }
 }
