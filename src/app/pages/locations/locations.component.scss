@@ -1,3 +1,4 @@
+$szamok:0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17;
 * {
   padding: 0;
   margin: 0;
@@ -70,9 +71,8 @@
 }
 
 
-
-.helyek0, .helyek1, .helyek2, .helyek3, .helyek4, .helyek5, .helyek6, .helyek7, .helyek8,
-.helyek9, .helyek10, .helyek11, .helyek12, .helyek13, .helyek14, .helyek15, .helyek16, .helyek17{
+@each $szam in $szamok {
+.helyek#{$szam} {
   width: 24rem;
   height: 32rem;
   border-radius: 10px;
@@ -142,36 +142,40 @@
   }
 
 }
+}
 
 @media only screen and (max-width: 449px) {
-  .helyek0, .helyek1, .helyek2, .helyek3, .helyek4, .helyek5, .helyek6, .helyek7, .helyek8,
-  .helyek9, .helyek10, .helyek11, .helyek12, .helyek13, .helyek14, .helyek15, .helyek16, .helyek17 {
-    width: 20rem;
-    height: 28rem;
-  }
-  .navbar > div {
-    width: 80px;
+  @each $szam in $szamok {
+    .helyek#{$szam} {
+      width: 20rem;
+      height: 28rem;
+    }
+    .navbar > div {
+      width: 80px;
+    }
   }
 }
 
 @media only screen and (max-width: 350px) {
-  .helyek0, .helyek1, .helyek2, .helyek3, .helyek4, .helyek5, .helyek6, .helyek7, .helyek8,
-  .helyek9, .helyek10, .helyek11, .helyek12, .helyek13, .helyek14, .helyek15, .helyek16, .helyek17 {
-    width: 15rem;
-    height: 20rem;
-    h1 {
-      font-size: 20px;
-    }
+  @each $szam in $szamok {
+    .helyek#{$szam} {
+      width: 15rem;
+      height: 20rem;
 
-    label {
-      font-size: 15px;
+      h1 {
+        font-size: 20px;
+      }
+
+      label {
+        font-size: 15px;
+      }
     }
-  }
-  .navbar {
-    flex-direction: column;
-  }
-  .navbar > div {
-    width: 100%;
-    padding: 10px;
+    .navbar {
+      flex-direction: column;
+    }
+    .navbar > div {
+      width: 100%;
+      padding: 10px;
+    }
   }
 }
