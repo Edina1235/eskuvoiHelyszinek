@@ -21,27 +21,33 @@ export class RegisterComponent implements OnInit, OnDestroy{
   jelszoUjra = new FormControl('');
   hatter: string = '';
   sub?:Subscription;
+  reg:string='Várd meg még sikerül a regisztráció';
+  fel:string='Várd meg még bekerülsz az adatbázisba';
   constructor(private auth:AuthService, private router: Router, private uservice: UserService, private image: ImageService) {
   }
   ngOnInit() {}
 
   register() {
-      this.auth.register(this.email.value as string, this.jelszo.value as string).then(cred => {
-        this.user = {
-          id:'',
-          username: this.felhasznalonev.value as string,
-          email: this.email.value as string,
-          telefon: this.telefon.value as string
-        };
-        this.uservice.create(this.user).then( data => {
-          console.log(data);
-        }).catch(error => {console.log(error);});
+    this.user = {
+      id:'',
+      username: this.felhasznalonev.value as string,
+      email: this.email.value as string,
+      telefon: this.telefon.value as string
+    };
+    console.log(this.user);
+    this.uservice.create(this.user).then( data => {
+      console.log(data);
+      console.log('siker');
+      this.fel='Felhasználó elmentve az adatbázisban!';
+    }).catch(error => {console.log(error);});
+    this.auth.register(this.email.value as string, this.jelszo.value as string).then(cred => {
         console.log(cred);
-        this.router.navigateByUrl('/login');
-      }).catch(error => {
+        this.reg='Sikeres regisztráció';
+    }).catch(error => {
         console.error(error);
-      });
+    });
   }
+
 
   navigation() {
     this.router.navigate(['/login']);

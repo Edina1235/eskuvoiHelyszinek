@@ -1,8 +1,10 @@
-<div class="hatter" [ngStyle]=getUrl() >
+<div class="hatter" [ngStyle]=getUrl() ></div>
+<div class="minden">
   <h1>Bejelentkezés</h1>
+  <p>{{hiba}}</p>
   <div class="mat-form-field">
     <mat-form-field appearance="outline">
-      <mat-label for="email">Email:</mat-label>
+      <mat-label for="email">E-mail:</mat-label>
       <input matInput type="text" [formControl]="email" /><br/>
     </mat-form-field>
     <mat-form-field appearance="outline">

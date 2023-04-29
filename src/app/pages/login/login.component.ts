@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy{
   jelszo = new FormControl('');
   hatter:string = '';
   sub?:Subscription;
+  hiba: string = '';
   constructor(private router:Router, private auth:AuthService, private image:ImageService) {
   }
   ngOnInit() {
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit, OnDestroy{
         localStorage.setItem('user', JSON.stringify(cred.user?.email));
         this.router.navigateByUrl('locations');
       }).catch(error => {
+        this.hiba='Hiba a bejelentkezés során (Hibás email vagy jelszó).';
         console.log(error);
       });
   }
