@@ -14,9 +14,10 @@
     <mat-card>
       <mat-card-header>Válaszd ki az időpontot</mat-card-header>
       <mat-card-content>
-      <input matInput [matDatepicker]="datepicker" [formControl]="datum" >
+      <input matInput [matDatepicker]="datepicker" [formControl]="datum">
         <mat-datepicker #datepicker></mat-datepicker>
       <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <p>{{siker}}</p>
       </mat-card-content>
       <mat-card-actions>
       <button mat-button (click)="foglal()" >Lefoglalás</button>

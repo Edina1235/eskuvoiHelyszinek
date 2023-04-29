@@ -32,6 +32,7 @@ export class AllocatesComponent implements OnInit,OnDestroy{
     dat?: number;
     sub?:Subscription;
     sub0?:Subscription;
+    siker: string = '';
 
     constructor(private actRoute: ActivatedRoute,
                 private router:Router,
@@ -70,18 +71,27 @@ export class AllocatesComponent implements OnInit,OnDestroy{
   }
 
   foglal() {
-      this.foglalas= {
-        id:'',
-        rendelo: JSON.parse(localStorage.getItem('user') as string),
-        mikor: new Date() as unknown as Timestamp,
-        nev: this.hely?.nev!=null ? this.hely?.nev : '',
-        kep: this.hely?.kep!=null ? this.hely?.kep : '',
-        datum: new Date(this.datum.value as string) as unknown as Timestamp
+      if(this.datum.value as string==='') {
+        this.siker='A foglalashoz be kell irnod egy datumot!!!';
+      }else if(new Date(this.datum.value as string).getTime() < new Date().getTime()) {
+        this.siker='Nem tudod a múltba lefoglalni!';
+      }else{
+        this.foglalas = {
+          id: '',
+          rendelo: JSON.parse(localStorage.getItem('user') as string),
+          mikor: new Date() as unknown as Timestamp,
+          nev: this.hely?.nev != null ? this.hely?.nev : '',
+          kep: this.hely?.kep != null ? this.hely?.kep : '',
+          datum: new Date(this.datum.value as string) as unknown as Timestamp
+        }
+        console.log(this.foglalas);
+        this.reservation.create(this.foglalas).then(_ => {
+          console.log("siker");
+          this.siker = 'Sikerült a foglalás';
+        }).catch(error => {
+          console.error(error);
+        });
       }
-      console.log(this.foglalas?.datum+' '+ this.foglalas?.mikor);
-      this.reservation.create(this.foglalas).then( _ => {
-        console.log("siker");
-      }).catch(error => {console.error(error);});
   }
   getUrl():Object {
     this.sub0=this.image.loadImage('images/back.jpg').subscribe(data => {
