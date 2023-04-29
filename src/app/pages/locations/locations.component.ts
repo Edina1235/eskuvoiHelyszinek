@@ -16,7 +16,9 @@ export class LocationsComponent implements OnInit,OnDestroy{
   helyek?: Array<Location>;
   seged?: Location;
   sub?:Subscription;
-  constructor(private router:Router, private image: ImageService, private location: LocationService,
+  constructor(private router:Router,
+              private image: ImageService,
+              private location: LocationService,
               private auth: AuthService) {
   }
 
@@ -56,7 +58,9 @@ export class LocationsComponent implements OnInit,OnDestroy{
     this.auth.logout().then(_=> {
       console.log('siker');
       localStorage.removeItem('user');
-    }).catch(error=>console.error(error));
+    }).catch(error=>{
+      console.error(error);
+    });
     this.router.navigateByUrl('login');
   }
 

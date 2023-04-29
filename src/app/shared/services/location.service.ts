@@ -23,7 +23,10 @@ export class LocationService {
     return this.firestore.collection<Location>(this.collectionName).doc(location.id).set(location);
   }
   getAll() {
-    return this.firestore.collection<Location>(this.collectionName, ref => ref.orderBy('nev','asc').orderBy('id','asc')).valueChanges();
+    return this.firestore.collection<Location>(this.collectionName,
+        ref => ref.orderBy('nev','asc')
+                          .orderBy('id','asc'))
+                          .valueChanges();
   }
   delete(id: string) {
     return this.firestore.collection<Location>(this.collectionName).doc(id).delete();

@@ -23,8 +23,12 @@ export class RegisterComponent implements OnInit, OnDestroy{
   sub?:Subscription;
   reg:string='Várd meg még sikerül a regisztráció';
   fel:string='Várd meg még bekerülsz az adatbázisba';
-  constructor(private auth:AuthService, private router: Router, private uservice: UserService, private image: ImageService) {
-  }
+
+  constructor(private auth:AuthService,
+              private router: Router,
+              private uservice: UserService,
+              private image: ImageService) {}
+
   ngOnInit() {}
 
   register() {

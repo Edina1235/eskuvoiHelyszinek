@@ -19,12 +19,16 @@ export class UserService {
     return this.firestore.collection<User>(this.collectionName).doc(user.id).update(user);
   }
   getByEmail(email: string) {
-    return this.firestore.collection<User>(this.collectionName, ref => ref.where('email','==',email)).valueChanges();
+    return this.firestore.collection<User>(this.collectionName,
+        ref => ref.where('email','==',email))
+                          .valueChanges();
   }
   delete(id: string) {
     return this.firestore.collection<User>(this.collectionName).doc(id).delete();
   }
   getAll() {
-    return this.firestore.collection<User>(this.collectionName, ref => ref.orderBy('username','asc')).valueChanges();
+    return this.firestore.collection<User>(this.collectionName,
+        ref => ref.orderBy('username','asc'))
+                          .valueChanges();
   }
 }

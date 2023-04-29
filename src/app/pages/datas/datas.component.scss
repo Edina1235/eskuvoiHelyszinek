@@ -137,3 +137,42 @@ section {
     margin:5px;
   }
 }
+
+@media only screen and (max-width: 661px) {
+  section {
+   
+    margin-left: 0;
+    margin-right: 0;
+    img {
+      max-width: 250px;
+    }
+  }
+  .main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media only screen and (max-width: 510px) {
+  .navbar > div {
+    width: 80px;
+  }
+  
+  section {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+
+@media only screen and (max-width: 380px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .navbar > div {
+    width: 100%;
+    padding: 10px;
+  }
+}
+

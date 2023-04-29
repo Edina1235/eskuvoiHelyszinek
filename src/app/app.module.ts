@@ -42,8 +42,4 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
   exports: [],
   bootstrap: [AppComponent]
 })
-export class AppModule{
-
-
-
-}
+export class AppModule{}

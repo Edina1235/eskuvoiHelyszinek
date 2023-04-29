@@ -11,8 +11,6 @@ import { getAuth, deleteUser } from "firebase/auth";
 import {Subscription} from "rxjs";
 
 
-
-
 @Component({
   selector: 'app-datas',
   templateUrl: './datas.component.html',
@@ -38,15 +36,19 @@ export class DatasComponent implements OnInit, OnDestroy{
   sub0?:Subscription;
   felhasznalok?: Array<User>;
 
-
-  constructor(private router:Router, private reservation: ReservationService, private uservice: UserService, private imageload:ImageService,
+  constructor(private router:Router,
+              private reservation: ReservationService,
+              private uservice: UserService,
+              private imageload:ImageService,
               private auth: AuthService) {}
 
   ngOnInit() {
     this.sub0 = this.uservice.getAll().subscribe(data => {
       this.felhasznalok=data;
       console.log(data[0]);
-    },error => {console.error(error);});
+    },error => {
+      console.error(error);
+    });
     this.seged = JSON.parse(localStorage.getItem('user') as string);
     this.uservice.getByEmail(this.seged as string).subscribe( data => {
       this.user = data[0];
@@ -63,7 +65,9 @@ export class DatasComponent implements OnInit, OnDestroy{
             if (this.foglalasok) {
               this.foglalasok[i].kep = data;
             }
-          },error => {console.error(error);});
+          },error => {
+            console.error(error);
+          });
         }
 
       },error => {
@@ -72,7 +76,6 @@ export class DatasComponent implements OnInit, OnDestroy{
 
     }, error => console.error(error));
   }
-
 
   helyszinek() {
     this.router.navigateByUrl('locations');
@@ -88,7 +91,6 @@ export class DatasComponent implements OnInit, OnDestroy{
     this.router.navigateByUrl('login');
   }
 
-
   modosit() {
     if(this.email.value !== '') {
       this.user.email = this.email.value as string;
@@ -103,14 +105,18 @@ export class DatasComponent implements OnInit, OnDestroy{
     console.log(this.user);
     this.uservice.update(this.user).then(_ => {
       console.log('siker');
-    }).catch(error=>console.error(error)).finally(()=>{});
+    }).catch(error=> {
+      console.error(error);
+    }).finally(()=>{});
 
   }
 
   torles(reservation: Reservation) {
       this.reservation.delete(reservation.id).then(_ => {
         console.log("siker");
-      }).catch(error => {console.error(error);});
+      }).catch(error => {
+        console.error(error);
+      });
   }
 
   deleteUser() {
@@ -121,9 +127,13 @@ export class DatasComponent implements OnInit, OnDestroy{
       if (user) {
         deleteUser(user).then(_ => {
           console.log('siker');
-        }).catch(error=> {console.error(error);});
+        }).catch(error=> {
+          console.error(error);
+        });
       }
-    }).catch(error=>{console.log(error)});
+    }).catch(error => {
+      console.log(error);
+    });
     this.router.navigateByUrl('login');
   }
   getUrl():Object {

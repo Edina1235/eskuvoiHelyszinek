@@ -17,8 +17,10 @@ export class LoginComponent implements OnInit, OnDestroy{
   hatter:string = '';
   sub?:Subscription;
   hiba: string = '';
-  constructor(private router:Router, private auth:AuthService, private image:ImageService) {
-  }
+  constructor(private router:Router,
+              private auth:AuthService,
+              private image:ImageService) {}
+
   ngOnInit() {
     console.log(JSON.parse('user') as string);
   }

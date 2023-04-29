@@ -22,6 +22,9 @@ export class ReservationService {
     return this.firestore.collection<Reservation>(this.collectionName).doc(reservation.id).set(reservation);
   }
   getAll(email: string) {
-    return this.firestore.collection<Reservation>(this.collectionName, ref => ref.where('rendelo','==',email).orderBy('datum','asc')).valueChanges();
+    return this.firestore.collection<Reservation>(this.collectionName,
+        ref => ref.where('rendelo','==',email)
+                          .orderBy('datum','asc'))
+                          .valueChanges();
   }
 }
