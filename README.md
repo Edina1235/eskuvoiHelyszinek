@@ -8,6 +8,7 @@ npm install után
 eskuvoiHelyszinek\node_modules\@angular\fire\compat\firestore\interfaces.d.ts -ben
 kommentezd ki a következőket(nekem ez oldotta meg):
 
+![](C:\Users\Hp EliteBook\OneDrive\Képernyőképek\Képernyőfelvétel (338).png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
 
