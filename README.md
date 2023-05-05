@@ -3,7 +3,7 @@
 admin@admin.com (admin123)
 Ő annyival tud többet, hogy látja a regisztrált felhasználókat.
 
-# Ha futtatni szeretnéd:
+## Ha futtatni szeretnéd:
 npm install után
 eskuvoiHelyszinek\node_modules\@angular\fire\compat\firestore\interfaces.d.ts -ben
 kommentezd ki a következőket(nekem ez oldotta meg):
@@ -11,6 +11,10 @@ kommentezd ki a következőket(nekem ez oldotta meg):
 ![Képernyőfelvétel (338)](https://user-images.githubusercontent.com/100123047/236535343-3ab05709-aa7e-45bf-aa5e-58d2f579c5a6.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
+
+## Webhely:
+
+eskuvoihelyszinek-645b0.web.app
 
 ## Development server
 
