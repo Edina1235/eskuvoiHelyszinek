@@ -76,21 +76,21 @@ export class AllocatesComponent implements OnInit,OnDestroy{
       }else if(new Date(this.datum.value as string).getTime() < new Date().getTime()) {
         this.siker='Nem tudod a múltba lefoglalni!';
       }else{
-        this.foglalas = {
-          id: '',
-          rendelo: JSON.parse(localStorage.getItem('user') as string),
-          mikor: new Date() as unknown as Timestamp,
-          nev: this.hely?.nev != null ? this.hely?.nev : '',
-          kep: this.hely?.kep != null ? this.hely?.kep : '',
-          datum: new Date(this.datum.value as string) as unknown as Timestamp
-        }
-        console.log(this.foglalas);
-        this.reservation.create(this.foglalas).then(_ => {
-          console.log("siker");
-          this.siker = 'Sikerült a foglalás';
-        }).catch(error => {
-          console.error(error);
-        });
+          this.foglalas = {
+            id: '',
+            rendelo: JSON.parse(localStorage.getItem('user') as string),
+            mikor: new Date() as unknown as Timestamp,
+            nev: this.hely?.nev != null ? this.hely?.nev : '',
+            kep: this.hely?.kep != null ? this.hely?.kep : '',
+            datum: new Date(this.datum.value as string) as unknown as Timestamp
+          }
+          console.log(this.foglalas);
+          this.reservation.create(this.foglalas).then(_ => {
+            console.log("siker");
+            this.siker = 'Sikerült a foglalás';
+          }).catch(error => {
+            console.error(error);
+          });
       }
   }
   getUrl():Object {
