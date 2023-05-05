@@ -3,6 +3,12 @@
 admin@admin.com (admin123)
 Ő annyival tud többet, hogy látja a regisztrált felhasználókat.
 
+#Ha futtatni szeretnéd:
+npm install után
+eskuvoiHelyszinek\node_modules\@angular\fire\compat\firestore\interfaces.d.ts -ben
+kommentezd ki a következőket(nekem ez oldotta meg):
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
 
 ## Development server
