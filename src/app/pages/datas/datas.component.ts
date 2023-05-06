@@ -49,18 +49,21 @@ export class DatasComponent implements OnInit, OnDestroy{
     },error => {
       console.error(error);
     });
-    this.seged = JSON.parse(localStorage.getItem('user') as string);
+    if(this.seged==null || this.seged=='') {
+      this.seged = JSON.parse(localStorage.getItem('user') as string);
+    }
     this.uservice.getByEmail(this.seged as string).subscribe( data => {
       this.user = data[0];
       this.id = data[0].id;
       this.email.setValue(this.user.email as string);
       this.felhasznalonev.setValue(this.user.username as string);
       this.telefon.setValue(this.user.telefon as string);
-
+      console.log(this.user.email);
       this.reservation.getAll(this.user.email as string).subscribe(value => {
         this.foglalasok=value;
         console.log(value);
         for(let i=0;i<this.foglalasok.length;i++) {
+          console.log(this.foglalasok[i].nev);
           this.imageload.loadImage(this.foglalasok[i].kep).subscribe( data => {
             if (this.foglalasok) {
               this.foglalasok[i].kep = data;
@@ -128,6 +131,10 @@ export class DatasComponent implements OnInit, OnDestroy{
     }).catch(error=> {
       console.error(error);
     }).finally(()=>{});
+
+    this.seged = this.email.value as string;
+    localStorage.setItem('user', this.email.value as string);
+    this.ngOnInit();
 
   }
 
