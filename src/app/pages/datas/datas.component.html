@@ -12,10 +12,7 @@
   <div class="bg-img" [ngStyle]=getUrl()></div>
   <div class="bevitel">
     <h1>Adataid:</h1>
-    <mat-form-field >
-      <mat-label>Email:</mat-label>
-      <input matInput type="text" [formControl]="email"/>
-    </mat-form-field>
+    <mat-label>Email: {{email}}</mat-label>
     <mat-form-field>
       <mat-label>Felhasználónév:</mat-label>
       <input matInput type="text" [formControl]="felhasznalonev"/>

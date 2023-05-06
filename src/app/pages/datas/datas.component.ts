@@ -26,11 +26,9 @@ export class DatasComponent implements OnInit, OnDestroy{
     telefon:''
   };
   hatter: string='';
-  email = new FormControl('');
+  email: string = '';
   felhasznalonev = new FormControl('');
   telefon = new FormControl('');
-  jelszo = new FormControl('');
-  jelszoUjra = new FormControl('');
   id: string ='';
   sub?:Subscription;
   sub0?:Subscription;
@@ -55,7 +53,7 @@ export class DatasComponent implements OnInit, OnDestroy{
     this.uservice.getByEmail(this.seged as string).subscribe( data => {
       this.user = data[0];
       this.id = data[0].id;
-      this.email.setValue(this.user.email as string);
+      this.email = this.user.email as string;
       this.felhasznalonev.setValue(this.user.username as string);
       this.telefon.setValue(this.user.telefon as string);
       console.log(this.user.email);
@@ -95,29 +93,6 @@ export class DatasComponent implements OnInit, OnDestroy{
   }
 
   modosit() {
-    if(this.email.value !== '' && this.email.value !== this.user.email) {
-      if(this.foglalasok!==undefined) {
-        for(let i=0;i<this.foglalasok.length;i++) {
-          this.foglalasok[i].rendelo=this.email.value as string;
-          this.reservation.update(this.foglalasok[i]).then(cred => {
-            console.log(cred);
-          }).catch(error => {
-            console.log(error);
-          });
-        }
-      }
-
-      const user = getAuth().currentUser;
-      if(user) {
-        updateEmail(user, this.email.value as string).then( cred => {
-          console.log(cred);
-        }).catch(error => {
-          console.log(error);
-        });
-      }
-
-      this.user.email = this.email.value as string;
-    }
     if(this.telefon.value !== '' && this.telefon.value !== this.user.telefon) {
       this.user.telefon = this.telefon.value as string;
     }
@@ -132,8 +107,6 @@ export class DatasComponent implements OnInit, OnDestroy{
       console.error(error);
     }).finally(()=>{});
 
-    this.seged = this.email.value as string;
-    localStorage.setItem('user', this.email.value as string);
     this.ngOnInit();
 
   }
@@ -147,6 +120,15 @@ export class DatasComponent implements OnInit, OnDestroy{
   }
 
   deleteUser() {
+    if(this.foglalasok?.length!=null) {
+      for(let i=0; this.foglalasok?.length as number > i; i++) {
+        this.reservation.delete(this.foglalasok[i].id).then(_ => {
+          console.log("siker");
+        }).catch(error => {
+          console.error(error);
+        });
+      }
+    }
     this.uservice.delete(this.user.id).then(_ => {
       console.log('siker')
       localStorage.removeItem('user');
